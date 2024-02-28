@@ -1,0 +1,10 @@
+{
+  "name": "wip-sam-node-llama-cpp",
+  "description": "AWS SAM Project using node-llama-cpp",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "node-llama-cpp": "^2.8.7"
+  }
+}

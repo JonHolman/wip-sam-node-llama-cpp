@@ -1,0 +1,26 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+
+Description: AWS SAM Project using node-llama-cpp
+
+Resources:
+  NodeLlamaCppFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      PackageType: Image
+      Architectures:
+        - arm64
+      MemorySize: 10240
+      Timeout: 900
+      FunctionUrlConfig:
+        AuthType: NONE
+        InvokeMode: RESPONSE_STREAM
+    Metadata:
+      DockerTag: node-llama-cpp
+      DockerContext: .
+      Dockerfile: Dockerfile
+
+Outputs:
+  NodeLlamaCppFunctionStreamingURL:
+    Description: "NodeLlamaCppFunction Streaming Response URL"
+    Value: !GetAtt NodeLlamaCppFunctionUrl.FunctionUrl
